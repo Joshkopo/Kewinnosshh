@@ -1,0 +1,483 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+    color: #000;
+    background: #fff;
+} 
+html {
+    scroll-behavior: smooth;
+}
+ 
+nav {
+    position: fixed;
+    background: #1b1b1b;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 12;
+}
+
+nav .menu {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.menu .logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.menu ul {
+    display: inline-flex;
+}
+
+.menu ul li {
+    list-style: none;
+    margin-left: 7px;
+}
+
+.menu ul li:first-child {
+    margin-left: 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+    background: #fff;
+    color: black;
+}
+ 
+section {
+    padding: 100px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.home { 
+    height: 1000px;
+    background: #2c2c2c;
+    color: #000; 
+}
+
+.inventory {
+    height: 1000px;
+    background: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.inventory .h1{
+    margin-left: 800px;
+} 
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: auto;
+}
+
+.table-container {
+    max-height: 800px; 
+    overflow-y: auto;
+    margin-top: 20px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td {
+    background-color: #fff;
+}
+
+.action-buttons button {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    
+}
+
+.edit-btn {
+    background-color: #4CAF50; 
+}
+
+.delete-btn {
+    background-color: #f44336; 
+}
+
+.edit-btn:hover {
+    background-color: #2b632e;
+}
+
+.delete-btn:hover {
+    background-color: #942523;
+}
+
+.inventory .inventory-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.inventory button { 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.inventory .add{
+    background-color: #45a049;
+
+}
+.inventory .add:hover{
+    background-color: #225025;
+}
+
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; 
+    display: none;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.form-popup.active {
+    display: block;
+}
+
+.form-popup h2 {
+    margin-bottom: 20px;
+}
+
+.form-popup label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-popup input[type="text"], 
+.form-popup input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-popup button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.form-popup button:hover {
+    background-color: #45a049;
+}
+
+.form-popup .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.truncate {
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide img {
+    width: 1300px;  
+    height: 850px; 
+    object-fit: cover;  
+    margin: 0 auto;  
+
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+@keyframes slide {
+    0% { margin-left: 0%; }
+    33% { margin-left: 0%; }
+    34% { margin-left: -100%; }
+    66% { margin-left: -100%; }
+    67% { margin-left: -200%; }
+    100% { margin-left: -200%; }
+}
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 10px; 
+}
+
+.text h1 {
+    font-size: 78px;
+    font-weight: 700;  
+    margin-top: 400px;
+}
+
+.text p {
+    font-size: 40px;
+    line-height: 1;
+    max-width: 1400px; 
+    margin-top: -40px;
+}
+.about {
+    background: #f4f4f4;
+    height: 650px;
+    color: #333; 
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.about h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #333;
+}
+.about p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+.about .highlight {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.contact { 
+    height: 1000px;
+    background: #333;
+    color: #fff;
+    background-image: url('image/b2.png');  
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 100px 20px;  
+    text-align: center;
+}
+.contact .Link {
+    width: 100%;
+    padding: 20px; 
+    display: flex;
+    margin-top: 610px;  
+}
+
+.contact .ShowMore{ 
+    width: 100% ;
+    height: 100px;
+    margin-top: -200px;
+    display: flex;
+}.contact .ShowMore .ShowMore-1, .ShowMore-2, .ShowMore-3, .ShowMore-4, .ShowMore-5 {
+    background-color: transparent;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid white;
+    background-color: rgba(95, 95, 95, 0.74);
+    color: #ffffff;
+    border-radius: 30px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    cursor: pointer;
+}
+
+.contact .ShowMore .ShowMore-1:hover, .ShowMore-2:hover, .ShowMore-3:hover, .ShowMore-4:hover, .ShowMore-5:hover {
+    background-color: #b6b6b6cb;
+    color: #ebebeb;
+    transform: scale(1.1); /* Slightly increase the size */
+}
+
+.contact .ShowMore .ShowMore-1{
+    margin-left: 150px;
+}
+
+.contact .ShowMore .ShowMore-2{
+    margin-left: 200px;
+}
+
+.contact .ShowMore .ShowMore-3{
+    margin-left: 220px;
+}
+
+.contact .ShowMore .ShowMore-4{
+    margin-left: 190px;
+}
+
+.contact .ShowMore .ShowMore-5{
+    margin-left: 210px;
+}
+.contact .Link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact .Link a:hover {
+    text-decoration: underline;
+}
+.fa-facebook-f, .fa-instagram {
+    font-size: 20px; /* Adjust as necessary */
+    margin-right: 8px; /* Spacing between icon and text */
+    background-color: rgb(24, 24, 24);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    padding: 10px 10px 10px;
+    margin-bottom: 10px;
+}
+.contact .Link .a1{ 
+    margin-left: 40px;
+}
+.contact .Link .a2{ 
+    margin-left: 215px;
+}
+
+.contact .Link .a3{ 
+    margin-left: 225px;
+}
+.contact .Link .a4{ 
+    margin-left: 215px;
+}
+.contact .Link .a5{ 
+    margin-left: 220px;
+}
+.styled-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon fill="%23333" points="0,0 10,0 5,5"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.styled-select:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
