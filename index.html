@@ -139,64 +139,7 @@
             <h1 class="h1" style="margin-top:10px">Inventory</h1>
             <button onclick="openForm('add')" class="add">Add Product</button>
         </div>
-        <div class="table-container">
-        <table>
-    <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Product Stocks</th>
-            <th>Product Price</th>
-            <th>Description</th>
-            <th>Product Status</th>
-            <th>Date of Purchase</th>
-            <th>Date Added</th> 
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        include 'product.php';
-
         
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
-        $sql = "SELECT * FROM products";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-               
-                $description = $row["product_description"];
-                if (strlen($description) > 10) {
-                    $description = substr($description, 0, 10) . '...';
-                }
-                
-                echo "<tr>
-                        <td>" . htmlspecialchars($row["product_ID"]) . "</td>
-                        <td>" . htmlspecialchars($row["product_name"]) . "</td>
-                        <td>" . htmlspecialchars($row["product_stocks"]) . "</td>
-                        <td>" . htmlspecialchars($row["product_price"]) . "</td>
-                        <td>" . htmlspecialchars($description) . "</td>
-                        <td>" . htmlspecialchars($row["product_status"]) . "</td>
-                        <td>" . htmlspecialchars($row["date_product_purchase"]) . "</td>
-                        <td>" . htmlspecialchars($row["date_product_add"]) . "</td> 
-                        <td class='action-buttons'>
-                            <button class='edit-btn' onclick='openForm(\"edit\", " . $row["product_ID"] . ")'>Edit</button>
-                            <button class='delete-btn' onclick='deleteProduct(" . $row["product_ID"] . ")'>Delete</button>
-                        </td>
-                    </tr>";
-            }
-        } else {
-            echo "<tr><td colspan='11'>No data available</td></tr>";
-        }
-
-        $conn->close();
-        ?>
-    </tbody>
-</table>
         </div>
        
 
